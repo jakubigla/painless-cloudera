@@ -39,7 +39,7 @@ docker-compose up -d
 
 Hue dashboard: http://quickstart.cloudera:8888/
 
-Sample hadoop command that can be run locally:
+Sample hadoop command for listing files on a root level, that can be run from your local terminal:
 ```bash
 hdfs dfs -ls hdfs://quickstart.cloudera/
 ```
