@@ -17,6 +17,7 @@ services:
      - "7180:7180"    # Cloudera Manager
      - "8020:8020"    # HDFS Namenode
      - "50070:50070"  # HDFS REST Namenode
+     - "10000:10000"  # Hive Beeline
     tty: true
     volumes:
       - logs-volume:/var/log

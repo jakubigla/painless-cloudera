@@ -14,26 +14,38 @@ The only requirement here are Docker stack and VirtualBox
 Even though this step is optional, it's recommended to create a separate `docker machine` for Cloudera, given how many resources it consume.
  
 ```bash
-docker-machine create cloudera -d virtualbox --virtualbox-cpu-count 1 --virtualbox-memory 4096
+docker-machine create cloudera -d virtualbox --virtualbox-cpu-count 2 --virtualbox-memory 6144
 ```
-This command will create a `boot2docker` 4GB memory and 2 CPU Virtual Machine. Please adjust resources allocation based on your needs. 
+This command will create a `boot2docker` 6GB memory and 2 CPU Virtual Machine. Please adjust resource allocation based on your needs (Recommended memory allocation is 8GB). 
 
-Now attach docker client to your terminal:
-```bash
-eval "$(docker-machine env cloudera)"
-```
-
-Add an entry to your host file, so you can access GUI from your browser
+Add an entry to your host file, so you can access GUI from your browser:
 ```bash
 echo -e "$(docker-machine ip cloudera)\tquickstart.cloudera" | sudo bash -c 'cat >> /etc/hosts'
 ```
 
 ## Run
 
+Attach docker client to your terminal:
+```bash
+eval "$(docker-machine env cloudera)"
+```
+
 Please run your docker-compose file:
 ```bash
 docker-compose up -d
 ```
+
+## Usage
+
+Hue dashboard: http://quickstart.cloudera:8888/
+
+Sample hadoop command that can be run locally:
+```bash
+hdfs dfs -ls hdfs://quickstart.cloudera/
+```
+
+Please note, that you need to have a local hadoop installation.
+OSX users can install it via `brew install hadoop`
 
 ## Todo
 
