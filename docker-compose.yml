@@ -1,0 +1,23 @@
+version: '2'
+
+volumes:
+  logs-volume:
+  data-volume:
+
+services:
+  cloudera:
+    container_name: cloudera
+    command: /usr/bin/docker-quickstart
+    hostname: quickstart.cloudera
+    image: cloudera/quickstart
+    privileged: true
+    ports:
+     - "8888:8888"    # HUE
+     - "11000:11000"  # Oozie
+     - "7180:7180"    # Cloudera Manager
+     - "8020:8020"    # HDFS Namenode
+     - "50070:50070"  # HDFS REST Namenode
+    tty: true
+    volumes:
+      - logs-volume:/var/log
+      - data-volume:/var/lib
